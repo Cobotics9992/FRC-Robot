@@ -12,10 +12,10 @@ import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 
 public class DriveSubsystem extends SubsystemBase {
-    private final WPI_VictorSPX leftMaster   = new WPI_VictorSPX(11);
-    private final WPI_VictorSPX rightMaster  = new WPI_VictorSPX(12);
+    private final WPI_VictorSPX leftMaster = new WPI_VictorSPX(11);
+    private final WPI_VictorSPX rightMaster = new WPI_VictorSPX(12);
     private final WPI_VictorSPX leftFollower = new WPI_VictorSPX(13);
-    private final WPI_VictorSPX rightFollower= new WPI_VictorSPX(14);
+    private final WPI_VictorSPX rightFollower = new WPI_VictorSPX(14);
 
     private final DifferentialDrive m_drive;
 

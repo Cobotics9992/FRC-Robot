@@ -33,24 +33,15 @@ public class Robot extends TimedRobot {
 
     // All periodic teleoperated function is instantied
     // inside RobotContainer.java's configureBindings method.
-    // Subsequently, this function is empty.
-    @Override
-    public void teleopPeriodic() {}
-    
-    
+    // Subsequently, teleopPeriodic need not exist currently.
+
     @Override
     public void autonomousInit() {
         m_autonomousCommand = m_robotContainer.getAutonomousCommand();
         CommandScheduler.getInstance().schedule(m_autonomousCommand);
     }
- 
-    @Override
-    public void autonomousPeriodic() {}
 
-
-    @Override
-    public void disabledInit() {}
-
-    @Override
-    public void disabledPeriodic() {}
+    // All autonomous functionality is setup in RobotContainer's
+    // getAutonomousCommand.
+    // Subsequently, autonomousPeriodic need not exist currently.
 }

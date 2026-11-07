@@ -12,7 +12,7 @@ import frc.robot.subsystems.PickupSubsystem;
 import frc.robot.subsystems.PigeonSubsystem;
 
 public class RobotContainer {
-    private final CommandXboxController m_driverController = new CommandXboxController(0); 
+    private final CommandXboxController m_driverController = new CommandXboxController(0);
     private final DriveSubsystem m_driveSubsystem = new DriveSubsystem();
     private final PickupSubsystem m_pickupSubsystem = new PickupSubsystem();
     private final PigeonSubsystem m_pigeonSubsystem = new PigeonSubsystem();
@@ -22,36 +22,29 @@ public class RobotContainer {
         configureBindings();
     }
 
-    private void configureBindings() { 
+    private void configureBindings() {
         m_driveSubsystem.setDefaultCommand(
-           m_driveSubsystem.drive(
-            () -> -m_driverController.getLeftX(),
-            () -> -m_driverController.getRightY()
-          )
-        ); 
+                m_driveSubsystem.drive(
+                        () -> -m_driverController.getLeftX(),
+                        () -> -m_driverController.getRightY()));
         m_pickupSubsystem.setDefaultCommand(
-            m_pickupSubsystem.run(
-                () -> m_driverController.getLeftTriggerAxis(),
-                () -> m_driverController.getRightTriggerAxis()
-            )
-        );
+                m_pickupSubsystem.run(
+                        () -> m_driverController.getLeftTriggerAxis(),
+                        () -> m_driverController.getRightTriggerAxis()));
         m_driverController.start().onTrue(
-            m_pigeonSubsystem.resetYaw()
-        );
+                m_pigeonSubsystem.resetYaw());
     }
 
     public Command getAutonomousCommand() {
         return new SequentialCommandGroup(
-            m_driveSubsystem.drive(() -> 1.0, () -> 0.0).withTimeout(0.5),
-            Commands.race(
-                m_pickupSubsystem.runExact(() -> -0.4).repeatedly(),
-                Commands.sequence(
-                    m_driveSubsystem.drive(() -> -0.5, () -> 0.0)
-                        .repeatedly().withTimeout(Milliseconds.of(400)),
-                    m_driveSubsystem.drive(() -> 0.5, () -> 0.0)
-                        .repeatedly().withTimeout(Milliseconds.of(400))
-                )
-            )
-        ).repeatedly();
+                m_driveSubsystem.drive(() -> 1.0, () -> 0.0).withTimeout(0.5),
+                Commands.race(
+                        m_pickupSubsystem.runExact(() -> -0.4).repeatedly(),
+                        Commands.sequence(
+                                m_driveSubsystem.drive(() -> -0.5, () -> 0.0)
+                                        .repeatedly().withTimeout(Milliseconds.of(400)),
+                                m_driveSubsystem.drive(() -> 0.5, () -> 0.0)
+                                        .repeatedly().withTimeout(Milliseconds.of(400)))))
+                .repeatedly();
     }
 }

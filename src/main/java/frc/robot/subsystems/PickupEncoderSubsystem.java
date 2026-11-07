@@ -11,7 +11,7 @@ public class PickupEncoderSubsystem extends SubsystemBase {
     private AM_Encoder_Telemetry telemetry = new AM_Encoder_Telemetry();
 
     private static final double COUNTS_PER_REV = 16384.0;
-    private static final double DEG_PER_COUNT  = 360.0 / COUNTS_PER_REV;
+    private static final double DEG_PER_COUNT = 360.0 / COUNTS_PER_REV;
 
     public double getVelocityDegPerSec() {
         return telemetry.velocityCountsPerSec * DEG_PER_COUNT;
@@ -20,7 +20,7 @@ public class PickupEncoderSubsystem extends SubsystemBase {
     public double getAngleDegrees() {
         return (telemetry.angleZeroedCounts & 0x3FFF) * DEG_PER_COUNT;
     }
-    
+
     public PickupEncoderSubsystem() {
         encoder.setReportPeriod(20);
         encoder.setZeroHere();
