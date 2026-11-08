@@ -5,9 +5,10 @@ import com.ctre.phoenix6.hardware.Pigeon2;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
+import static frc.robot.Constants.CanIDs;
 
 public class PigeonSubsystem extends SubsystemBase {
-    private final Pigeon2 m_pigeon = new Pigeon2(6);
+    private final Pigeon2 m_pigeon = new Pigeon2(CanIDs.pigeon2);
 
     public PigeonSubsystem() {
         m_pigeon.setYaw(0.0);

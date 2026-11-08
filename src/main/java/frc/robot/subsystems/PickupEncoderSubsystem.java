@@ -5,9 +5,10 @@ import com.andymark.jni.AM_CAN_HexBoreEncoder.AM_Encoder_Telemetry;
 
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
+import static frc.robot.Constants.CanIDs;
 
 public class PickupEncoderSubsystem extends SubsystemBase {
-    private final AM_CAN_HexBoreEncoder encoder = new AM_CAN_HexBoreEncoder(0);
+    private final AM_CAN_HexBoreEncoder encoder = new AM_CAN_HexBoreEncoder(CanIDs.pickupEncoder);
     private AM_Encoder_Telemetry telemetry = new AM_Encoder_Telemetry();
 
     private static final double COUNTS_PER_REV = 16384.0;

@@ -7,9 +7,10 @@ import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
+import static frc.robot.Constants.CanIDs;
 
 public class PickupSubsystem extends SubsystemBase {
-    private final WPI_TalonSRX m_pickupMotor = new WPI_TalonSRX(22);
+    private final WPI_TalonSRX m_pickupMotor = new WPI_TalonSRX(CanIDs.pickupMotor);
 
     public PickupSubsystem() {
         m_pickupMotor.configFactoryDefault();
