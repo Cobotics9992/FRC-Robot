@@ -2,6 +2,7 @@ package frc.robot.subsystems;
 
 import com.ctre.phoenix6.hardware.Pigeon2;
 
+import edu.wpi.first.units.measure.Angle;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
@@ -14,8 +15,8 @@ public class PigeonSubsystem extends SubsystemBase {
         m_pigeon.setYaw(0.0);
     }
 
-    public double getYaw() {
-        return m_pigeon.getYaw().getValueAsDouble();
+    public Angle getYaw() {
+        return m_pigeon.getYaw().getValue();
     }
 
     public Command resetYaw() {
